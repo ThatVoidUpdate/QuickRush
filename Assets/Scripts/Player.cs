@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
             StartCoroutine(Die());
         }
     }
-    IEnumerator Die()
+    public IEnumerator Die()
     {
         ScreenBlackout.SetTrigger("Die");
         yield return new WaitForSeconds(1);

@@ -27,9 +27,10 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Player"))
+        if (col.CompareTag("Player") && col.GetType() == typeof(CompositeCollider2D))
         {
             col.GetComponent<Player>().DoDamage(AttackDamage);
         }
+
     }
 }

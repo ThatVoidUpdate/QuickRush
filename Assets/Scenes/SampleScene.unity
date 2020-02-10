@@ -9378,6 +9378,27 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1169925764}
+    - target: {fileID: 665569303985024546, guid: 0c1080021d4c21542ad83677b0e6a01e,
+        type: 3}
+      propertyPath: HurtSprite
+      value: 
+      objectReference: {fileID: 21300286, guid: 323094a1470470049a3af5030cf312c4,
+        type: 3}
+    - target: {fileID: 665569303985024550, guid: 0c1080021d4c21542ad83677b0e6a01e,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 665569303985024550, guid: 0c1080021d4c21542ad83677b0e6a01e,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 665569303985024550, guid: 0c1080021d4c21542ad83677b0e6a01e,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c1080021d4c21542ad83677b0e6a01e, type: 3}
 --- !u!1001 &7998877822775591272

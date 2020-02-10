@@ -12,9 +12,11 @@ public class Player : MonoBehaviour
     public float JumpForce;
     [Space]
     public Collider2D TerrainCollider;
+
     [Header("Graphics")]
     public Sprite StandardSprite;
     public Sprite Movingsprite;
+    public Sprite HurtSprite;
 
     [Space]
     public float MaxHealth;
@@ -24,6 +26,8 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private new BoxCollider2D collider;
     private new SpriteRenderer renderer;
+
+    private bool CanChangeSprite = true;
 
     void Start()
     {
@@ -50,7 +54,10 @@ public class Player : MonoBehaviour
     {
         if (Input.GetAxis("Horizontal") != 0)
         {
-            renderer.sprite = Movingsprite;
+            if (CanChangeSprite)
+            {
+                renderer.sprite = Movingsprite;
+            }            
 
             if (Input.GetAxis("Horizontal") > 0)
             {
@@ -63,7 +70,10 @@ public class Player : MonoBehaviour
         }
         else
         {
-            renderer.sprite = StandardSprite;
+            if (CanChangeSprite)
+            {
+                renderer.sprite = StandardSprite;
+            }            
         }
     }
 
@@ -74,6 +84,7 @@ public class Player : MonoBehaviour
 
     public void DoDamage(float Damage)
     {
+        StartCoroutine(DoHurtGraphics());
         Health -= Damage;
         healthBar.UpdateBar();
         if (Health <= 0)
@@ -83,7 +94,25 @@ public class Player : MonoBehaviour
     }
     private void Die()
     {
-        Debug.Log("Blegh");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    IEnumerator DoHurtGraphics()
+    {
+        InvokeRepeating("FlipVisible", 0.0f, 0.1f);
+        renderer.sprite = HurtSprite;
+        renderer.color = Color.red;
+        CanChangeSprite = false;
+        yield return new WaitForSeconds(0.5f);
+        renderer.sprite = StandardSprite;
+        renderer.color = Color.white;
+        CanChangeSprite = true;
+        renderer.enabled = true;
+        CancelInvoke();
+    }
+
+    private void FlipVisible()
+    {
+        renderer.enabled = !renderer.enabled;
     }
 }

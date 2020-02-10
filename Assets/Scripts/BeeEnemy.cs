@@ -8,7 +8,7 @@ public class BeeEnemy : Enemy
     public float Speed; 
 
     private int CurrentPathIndex = 0;
-    private float PathSwitchThreshold = 0.01f;
+    private float PathSwitchThreshold = 0.1f;
     private Vector3 NextPosition;
 
     // Start is called before the first frame update

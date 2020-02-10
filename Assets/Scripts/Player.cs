@@ -25,6 +25,9 @@ public class Player : MonoBehaviour
     public HealthBar healthBar;
 
     [Space]
+    public CoinCounter coinCounter;
+
+    [Space]
     public Animator ScreenBlackout;
 
     private Rigidbody2D rb;

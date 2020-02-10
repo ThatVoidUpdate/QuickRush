@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 public class Player : MonoBehaviour
 {
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     public Animator ScreenBlackout;
 
     private Rigidbody2D rb;
-    private new BoxCollider2D collider;
+    private new CompositeCollider2D collider;
     private new SpriteRenderer renderer;
 
     private bool CanChangeSprite = true;
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        collider = GetComponent<BoxCollider2D>();
+        collider = GetComponent<CompositeCollider2D>();
         renderer = GetComponent<SpriteRenderer>();
         Health = MaxHealth;
     }

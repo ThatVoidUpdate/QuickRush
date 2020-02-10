@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 665569303985024544}
   - component: {fileID: 665569303985024547}
   - component: {fileID: 665569303985024546}
+  - component: {fileID: 8708208300527876345}
+  - component: {fileID: 8389430009533841832}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -144,12 +146,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 10
   JumpForce: 10
-  TerrainCollider: {fileID: 0}
+  collision: {fileID: 0}
   StandardSprite: {fileID: 21300278, guid: 323094a1470470049a3af5030cf312c4, type: 3}
   Movingsprite: {fileID: 21300292, guid: 323094a1470470049a3af5030cf312c4, type: 3}
   HurtSprite: {fileID: 0}
   MaxHealth: 0
+  Health: 0
   healthBar: {fileID: 0}
+  ScreenBlackout: {fileID: 0}
+--- !u!66 &8708208300527876345
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665569303985024551}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 665569303985024544}
+    m_ColliderPaths:
+    - - X: 2912905
+        Y: 5000000
+      - X: -3009979
+        Y: 5000000
+      - X: -3009979
+        Y: -5000000
+      - X: 2912905
+        Y: -5000000
+  m_CompositePaths:
+    m_Paths:
+    - - {x: 0.2912905, y: 0.5}
+      - {x: -0.3009979, y: 0.5}
+      - {x: -0.3009979, y: -0.5}
+      - {x: 0.2912905, y: -0.5}
+  m_VertexDistance: 0.0005
+--- !u!61 &8389430009533841832
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665569303985024551}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.18444073}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.21369863}
+  m_EdgeRadius: 0
 --- !u!1 &665569303991727995
 GameObject:
   m_ObjectHideFlags: 0

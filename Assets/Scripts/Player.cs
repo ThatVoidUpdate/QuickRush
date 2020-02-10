@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
@@ -11,7 +12,7 @@ public class Player : MonoBehaviour
     public float Speed;
     public float JumpForce;
     [Space]
-    public Collider2D TerrainCollider;
+    public TilemapCollider2D collision;
 
     [Header("Graphics")]
     public Sprite StandardSprite;
@@ -46,7 +47,7 @@ public class Player : MonoBehaviour
         //rb.MovePosition(transform.position + new Vector3(Input.GetAxis("Horizontal") * Speed, 0));
         float HorizontalMovement = Input.GetAxis("Horizontal");
         float VerticalMovement = rb.velocity.y + Time.deltaTime * -9.81f;
-        if (Input.GetAxis("Jump") == 1 && collider.IsTouching(TerrainCollider))
+        if (Input.GetAxis("Jump") == 1 && collider.IsTouching(collision))
         {
             VerticalMovement = JumpForce;
         }

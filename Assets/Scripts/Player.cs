@@ -59,4 +59,9 @@ public class Player : MonoBehaviour
             renderer.sprite = StandardSprite;
         }
     }
+
+    public void DoDamage(float Damage)
+    {
+        Debug.Log("Ouch");
+    }
 }

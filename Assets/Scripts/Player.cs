@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
@@ -15,6 +16,11 @@ public class Player : MonoBehaviour
     public Sprite StandardSprite;
     public Sprite Movingsprite;
 
+    [Space]
+    public float MaxHealth;
+    private float Health;
+    public HealthBar healthBar;
+
     private Rigidbody2D rb;
     private new BoxCollider2D collider;
     private new SpriteRenderer renderer;
@@ -24,6 +30,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         renderer = GetComponent<SpriteRenderer>();
+        Health = MaxHealth;
     }
 
     // Update is called once per frame
@@ -60,8 +67,23 @@ public class Player : MonoBehaviour
         }
     }
 
+    public float GetHealth()
+    {
+        return Health;
+    }
+
     public void DoDamage(float Damage)
     {
-        Debug.Log("Ouch");
+        Health -= Damage;
+        healthBar.UpdateBar();
+        if (Health <= 0)
+        {
+            Die();
+        }
+    }
+    private void Die()
+    {
+        Debug.Log("Blegh");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

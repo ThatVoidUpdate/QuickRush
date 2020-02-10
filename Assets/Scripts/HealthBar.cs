@@ -34,7 +34,7 @@ public class HealthBar : MonoBehaviour
 
     public void UpdateBar()
     {
-        CurrentHealth = player.GetHealth();
+        CurrentHealth = player.Health;
         for (int i = 0; i < CurrentHealth; i++)
         {
             Hearts[i].GetComponent<Image>().sprite = HeartLevels[0];

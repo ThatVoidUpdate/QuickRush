@@ -20,8 +20,11 @@ public class Player : MonoBehaviour
 
     [Space]
     public float MaxHealth;
-    private float Health;
+    public float Health;
     public HealthBar healthBar;
+
+    [Space]
+    public Animator ScreenBlackout;
 
     private Rigidbody2D rb;
     private new BoxCollider2D collider;
@@ -77,11 +80,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    public float GetHealth()
-    {
-        return Health;
-    }
-
     public void DoDamage(float Damage)
     {
         StartCoroutine(DoHurtGraphics());
@@ -89,11 +87,13 @@ public class Player : MonoBehaviour
         healthBar.UpdateBar();
         if (Health <= 0)
         {
-            Die();
+            StartCoroutine(Die());
         }
     }
-    private void Die()
+    IEnumerator Die()
     {
+        ScreenBlackout.SetTrigger("Die");
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

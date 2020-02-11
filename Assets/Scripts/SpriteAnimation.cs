@@ -8,6 +8,8 @@ public class SpriteAnimation : MonoBehaviour
     public Sprite[] AnimationFrames;
     public float SecondsPerFrame;
 
+    public bool UseRandom = false;
+
     private SpriteRenderer renderer;
 
     private float CurrentTime;
@@ -25,7 +27,11 @@ public class SpriteAnimation : MonoBehaviour
         CurrentTime += Time.deltaTime;
         if (CurrentTime > SecondsPerFrame)
         {
-            CurrentFrame = (CurrentFrame + 1) % AnimationFrames.Length;
+            if ((UseRandom && Random.Range(0.0f, 1.0f) > 0.5) || !UseRandom)
+            {
+                CurrentFrame = (CurrentFrame + 1) % AnimationFrames.Length;            
+            }
+
             renderer.sprite = AnimationFrames[CurrentFrame];
             CurrentTime -= SecondsPerFrame;
         }

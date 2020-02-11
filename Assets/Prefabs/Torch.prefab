@@ -96,3 +96,4 @@ MonoBehaviour:
   - {fileID: 21300632, guid: 323094a1470470049a3af5030cf312c4, type: 3}
   - {fileID: 21300634, guid: 323094a1470470049a3af5030cf312c4, type: 3}
   SecondsPerFrame: 0.1
+  UseRandom: 1

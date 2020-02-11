@@ -20,7 +20,7 @@ public class Timer : MonoBehaviour
         if (IsTiming)
         {
             currentTime += Time.deltaTime;
-            text.text = currentTime.ToString();
+            text.text = currentTime.ToString("F2").PadLeft(5, '0');
         }
     }
 

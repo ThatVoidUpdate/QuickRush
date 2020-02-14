@@ -101,6 +101,11 @@ public class Player : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void Win()
+    {
+        ScreenBlackout.SetTrigger("Die");
+    }
+
     IEnumerator DoHurtGraphics()
     {
         InvokeRepeating("FlipVisible", 0.0f, 0.1f);

@@ -10,7 +10,7 @@ public class ScoreSaver
     //Score format
     //XXX - XX.XX
 
-    public static void SaveTime(float time)
+    public static void SaveTime(string name, float time)
     {
         if(!File.Exists("scores.txt"))
         {//File doesn't exist, create it before continuing
@@ -21,11 +21,14 @@ public class ScoreSaver
 
         List<string> ScoreList = new List<string>();
         ScoreList.AddRange(ScoreLines);
-        ScoreList.Add("XXX " + time);
+        ScoreList.Add(name + " "  + time);
 
-        ScoreList.OrderBy(score => score.Split(' ')[1]);
-        var SortedList = from s in ScoreList orderby s.Split(' ')[1] select s;
-        ScoreList = SortedList.ToList();
+        if (ScoreList.Count > 0)
+        {
+            ScoreList.OrderBy(score => score.Split(' ')[1]);
+            var SortedList = from s in ScoreList orderby s.Split(' ')[1] select s;
+            ScoreList = SortedList.ToList();
+        }
 
         if (ScoreList.Count > 10)
         {

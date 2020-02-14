@@ -5,9 +5,12 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    private float currentTime = 0;
+    [HideInInspector]
+    public float currentTime = 0;
     private TextMeshProUGUI text;
     private bool IsTiming = true;
+
+    public NickEntry NameEntry;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,17 +31,17 @@ public class Timer : MonoBehaviour
     {
         if (IsTiming)
         {
-
-
             IsTiming = false;
-            ScoreSaver.SaveTime(currentTime);
             StartCoroutine(Restart());
         }
     }
 
     IEnumerator Restart()
     {
-        yield return new WaitForSeconds(2);
-        StartCoroutine(FindObjectOfType<Player>().Die());
+        // yield return new WaitForSeconds(2);
+        FindObjectOfType<Player>().Win();
+        yield return new WaitForSeconds(1);
+        NameEntry.gameObject.SetActive(true);
+
     }
 }

@@ -26,8 +26,14 @@ public class Timer : MonoBehaviour
 
     public void Stop()
     {
-        IsTiming = false;
-        StartCoroutine(Restart());
+        if (IsTiming)
+        {
+
+
+            IsTiming = false;
+            ScoreSaver.SaveTime(currentTime);
+            StartCoroutine(Restart());
+        }
     }
 
     IEnumerator Restart()

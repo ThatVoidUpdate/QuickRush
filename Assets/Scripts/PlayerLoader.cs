@@ -13,15 +13,27 @@ public class PlayerLoader : MonoBehaviour
 
     private Player player;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        DontDestroyOnLoad(gameObject);
+    private static PlayerLoader _instance;
 
+    public static PlayerLoader Instance {get { return _instance; }}
+
+    // Start is called before the first frame update
+    void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        _instance = this;
+
+        DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
              
     }
 
-    private void OnLevelWasLoaded(int level)
+    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
         player = FindObjectOfType<Player>();
         if (player != null)

@@ -14,10 +14,22 @@ public class NickEntry : MonoBehaviour
     private string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private int[] indexes = new int[3];
     public TextMeshProUGUI[] characters;
+    public TextMeshProUGUI ScoreArea;
+    public TextMeshProUGUI Score;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameObject.SetActive(false);
+    }
+
+    public void OnEnable()
+    {
+        ScoreArea.text = "Times:\n";
+        foreach (string score in ScoreSaver.GetScores())
+        {
+            ScoreArea.text += score + "\n";
+        }
+        Score.text = FindObjectOfType<Timer>().currentTime.ToString();
     }
 
     // Update is called once per frame

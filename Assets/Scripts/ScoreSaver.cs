@@ -43,4 +43,9 @@ public class ScoreSaver
             }
         }
     }
+
+    public static string[] GetScores()
+    {
+        return File.ReadAllLines("scores.txt");
+    }
 }
